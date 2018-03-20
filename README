@@ -1,0 +1,33 @@
+Install Argobots framework
+
+1. Build argobots
+- In argobots-rte home
+- $ cd argobots/ 
+- $ ./autogen.sh
+- $ mkdir argobots
+- $ ./configure --prefix=$PWD/argobots             <- abt (argobot) install dir
+- $ make -j
+- $ make install
+
+2. Build Bolt (OpenMP runtime)
+- In argobots-rte home
+- $ mkdir bolt                                     <- bolt install dir
+- $ mkdir build-abt
+- $ source env.sh
+- $ cd build-abt
+- $ cmake ../llvm -G "Unix Makefiles"
+    -DCMAKE_INSTALL_PREFIX=../bolt
+    -DLIBOMP_USE_ARGOBOTS=on
+    -DLIBOMP_ARGOBOTS_INSTALL_DIR=../argobots/argobots
+    -DLIBOMP_USE_ITT_NOTIFY=off
+- $ make -j
+- $ make install
+
+Use Bolt-omp-Argobots framework
+
+1. $ source env.sh
+2. compile with clang/llvm while linking Bolt (-lomp)
+
+To details:
+Refer to the original bolt-omp, argobots documents
+http://www.bolt-omp.org/documentation

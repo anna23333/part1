@@ -1,0 +1,4 @@
+arch/fcontext/libabt_la-take_x86_64_sysv_elf_gas.lo: \
+ arch/fcontext/take_x86_64_sysv_elf_gas.S /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
